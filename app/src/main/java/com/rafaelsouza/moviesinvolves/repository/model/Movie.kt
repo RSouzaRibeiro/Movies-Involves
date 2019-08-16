@@ -20,13 +20,18 @@ class Movie {
 
     @ColumnInfo(name = "release_date")
     @SerializedName("release_date")
-    var release_date: String = ""
+    var releaseDate: String = ""
 
     @ColumnInfo(name = "poster_path")
     @SerializedName("poster_path")
     var imagePath: String? = null
 
-    /*@ColumnInfo(name = "genre_ids")
-    @SerializedName("genre_ids")
-    var genres: ArrayList<String>? = null*/
+    @ColumnInfo(name = "backdrop_path")
+    @SerializedName("backdrop_path")
+    var backdropPath: String? = null
+
+
+    /*@ColumnInfo(name = "genres")
+    @SerializedName("genres")
+    var genres: ArrayList<Genre>? = null*/
 }

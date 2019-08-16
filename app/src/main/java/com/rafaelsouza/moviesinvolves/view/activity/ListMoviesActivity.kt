@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.widget.SearchView
 import android.widget.Toast
@@ -56,7 +57,7 @@ class ListMoviesActivity : AppCompatActivity() {
     }
 
     private fun initRecycleView(result: ArrayList<Movie>) {
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.adapter = MovieAdapter(this, result)
 
 

@@ -5,4 +5,5 @@
 
 
     <string name="label_seach_code">Buscar por nome...</string>
+    <string name="label_release">Lançamento :</string>
 </resources>

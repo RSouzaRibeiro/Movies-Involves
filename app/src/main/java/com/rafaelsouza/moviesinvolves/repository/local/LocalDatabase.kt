@@ -2,9 +2,10 @@ package com.rafaelsouza.moviesinvolves.repository.local
 
 import android.arch.persistence.db.SupportSQLiteOpenHelper
 import android.arch.persistence.room.*
+import com.rafaelsouza.moviesinvolves.repository.model.Genre
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 
-@Database(entities = [Movie::class], version = 1)
+@Database(entities = [Movie::class, Genre::class], version = 2)
 abstract class LocalDatabase: RoomDatabase() {
     override fun clearAllTables() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

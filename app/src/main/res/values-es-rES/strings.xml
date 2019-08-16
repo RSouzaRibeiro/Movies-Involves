@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Peliculas Involves</string>
+    <string name="label_seach_code">Buscar por nombre...</string>
+    <string name="label_release">Lanzamiento :</string>
+</resources>
