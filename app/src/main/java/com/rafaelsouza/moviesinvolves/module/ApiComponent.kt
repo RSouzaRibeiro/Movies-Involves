@@ -1,7 +1,7 @@
 package com.rafaelsouza.moviesinvolves.module
 
-import com.rafaelsouza.moviesinvolves.view.ListMoviesActivity
-import com.rafaelsouza.moviesinvolves.view.MainActivity
+import com.rafaelsouza.moviesinvolves.view.activity.ListMoviesActivity
+import com.rafaelsouza.moviesinvolves.view.activity.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 

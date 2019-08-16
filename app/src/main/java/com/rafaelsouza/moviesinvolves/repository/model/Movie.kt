@@ -22,6 +22,10 @@ class Movie {
     @SerializedName("release_date")
     var release_date: String = ""
 
+    @ColumnInfo(name = "poster_path")
+    @SerializedName("poster_path")
+    var imagePath: String? = null
+
     /*@ColumnInfo(name = "genre_ids")
     @SerializedName("genre_ids")
     var genres: ArrayList<String>? = null*/

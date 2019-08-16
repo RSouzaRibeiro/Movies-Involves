@@ -41,4 +41,21 @@ class ListMoviesViewModel: BaseViewModel {
             ))
 
     }
+
+    fun getSearchMovies(search: String){
+        disposables.add(service.search(search)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe{progress.value =true }
+            .doFinally{ progress.value =false }
+            .subscribe(
+                {
+                    movies.value = it
+                },
+                {
+                    error.value = it.localizedMessage
+                }
+            ))
+
+    }
 }
