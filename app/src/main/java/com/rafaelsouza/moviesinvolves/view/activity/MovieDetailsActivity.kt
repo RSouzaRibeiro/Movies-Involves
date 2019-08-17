@@ -8,13 +8,13 @@ import android.view.View
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
+import com.rafaelsouza.moviesinvolves.util.DateUtils
 import com.rafaelsouza.moviesinvolves.viewmodel.MovieDetailsViewModel
 import com.rafaelsouza.moviesinvolves.viewmodel.ViewModelFactory
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_details.*
-import kotlinx.android.synthetic.main.item_movie.*
-import java.text.ParseException
-import java.text.SimpleDateFormat
+
+
 import javax.inject.Inject
 
 
@@ -46,11 +46,11 @@ class MovieDetailsActivity : AppCompatActivity() {
         })
 
         viewModel?.progress?.observe(this, Observer { isProgress ->
-            if(isProgress!!){
-               progressBar.visibility = View.VISIBLE
-           }else{
-               progressBar.visibility = View.GONE
-           }
+            if (isProgress!!) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
+            }
         })
 
         viewModel?.error?.observe(this, Observer {
@@ -61,8 +61,9 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun initView(movie: Movie) {
         movie.backdropPath?.let { setPoster(it) }
-        titleTXT.text = movie.title
-
+        txtRatingNumber.text = movie.voteAverage.toString()
+        txtReleaseDate.text= DateUtils().formatDate(movie.releaseDate)
+        txtSinopse.text = movie.overview
 
 
     }
@@ -71,7 +72,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         Picasso.with(this)
             .load(getString(R.string.PATH_GET_IMAGE) + imagePath)
             .placeholder(R.mipmap.placeholder_movie)
-            .resize(320,250)
+            .resize(320, 250)
             .centerCrop()
             .into(posterMovieIMG)
 

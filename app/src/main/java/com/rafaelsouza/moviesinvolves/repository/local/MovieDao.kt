@@ -5,10 +5,13 @@ import android.arch.persistence.room.*
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 
 @Dao
- interface MovieDao {
+interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovie(movie: Movie)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllMovie(movie: ArrayList<Movie>)
 
     @Update
     fun updateMovie(movie: Movie)

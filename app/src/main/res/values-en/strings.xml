@@ -2,5 +2,8 @@
 <resources>
     <string name="app_name">Movies Involves</string>
     <string name="label_seach_code">Search by Name...</string>
-    <string name="label_release">Release :</string>
+    <string name="label_release">Release </string>
+    <string name="label_rating">Rating</string>
+    <string name="label_overview">Overview</string>
+    <string name="label_genre">Genre</string>
 </resources>

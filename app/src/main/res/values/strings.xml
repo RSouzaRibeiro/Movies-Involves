@@ -6,4 +6,7 @@
 
     <string name="label_seach_code">Buscar por nome...</string>
     <string name="label_release">Lançamento :</string>
+    <string name="label_rating">Média</string>
+    <string name="label_overview">Sinopse</string>
+    <string name="label_genre">Gênero</string>
 </resources>

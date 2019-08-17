@@ -30,6 +30,14 @@ class Movie {
     @SerializedName("backdrop_path")
     var backdropPath: String? = null
 
+    @ColumnInfo(name = "vote_average")
+    @SerializedName("vote_average")
+    var voteAverage: Float? = null
+
+    @ColumnInfo(name = "overview")
+    @SerializedName("overview")
+    var overview: String? = null
+
 
     /*@ColumnInfo(name = "genres")
     @SerializedName("genres")

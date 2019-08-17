@@ -6,7 +6,10 @@ import com.rafaelsouza.moviesinvolves.repository.model.Genre
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 
 @Database(entities = [Movie::class, Genre::class], version = 2)
-abstract class LocalDatabase: RoomDatabase() {
+abstract class LocalDatabase : RoomDatabase() {
+
+    abstract fun movieDao(): MovieDao
+
     override fun clearAllTables() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
