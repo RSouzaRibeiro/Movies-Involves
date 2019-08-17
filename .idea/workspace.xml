@@ -11,8 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6edd0856-1405-4956-8aac-118cbd75626a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/util/Utils.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/item_movie.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Converters.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -23,28 +22,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/module/ApiModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/module/ApiModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/Service.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/Service.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Movie.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Movie.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/request/MoviesRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/request/MoviesRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/util/DateUtils.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/ListMoviesActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/ListMoviesActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/MovieDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/MovieDetailsActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/adapter/MovieAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/adapter/MovieAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/ListMoviesViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/ListMoviesViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_movie_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_movie_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_movie.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_movie.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-pt/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,41 +58,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Movie.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="383">
+              <caret line="63" column="39" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/request/MoviesRequest.kt">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Converters.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+            <state relative-caret-position="198">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
-                <element signature="e#59#169#0" expanded="true" />
+                <element signature="e#57#176#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="180">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+              <folding>
+                <element signature="e#57#276#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,9 +114,9 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_movie_details.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="167" column="61" selection-start-line="167" selection-start-column="61" selection-end-line="167" selection-end-column="61" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="264" column="42" selection-start-line="264" selection-start-column="42" selection-end-line="264" selection-end-column="42" />
               <folding>
                 <element signature="e#3503#3527#0" expanded="true" />
                 <element signature="e#3759#3770#0" expanded="true" />
@@ -157,17 +134,26 @@
               </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/MovieDetailsActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
+            <state relative-caret-position="401">
+              <caret line="89" column="41" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
               <folding>
                 <element signature="e#54#710#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -217,7 +203,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/MovieDetailsViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_list_movies.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/adapter/MovieAdapter.kt" />
@@ -233,13 +218,15 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-es-rES/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/util/Utils.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-en/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/request/MoviesRequest.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/ListMoviesViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Converters.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/MovieDetailsActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_movie_details.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/request/MoviesRequest.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/ListMoviesViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Movie.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt" />
       </list>
     </option>
   </component>
@@ -582,7 +569,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17432208" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17432208" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -594,12 +581,12 @@
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.3286638" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.3293718" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32597622" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32543105" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5007576" side_tool="true" weight="0.32994923" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49924242" visible="true" weight="0.18103448" />
+      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49924242" weight="0.2640086" />
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.25538793" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.33728448" />
+      <window_info anchor="bottom" id="Debug" order="9" visible="true" weight="0.33728448" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -671,6 +658,12 @@
           <line>43</line>
           <properties />
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/MovieDetailsViewModel.kt</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -803,13 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -947,46 +933,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/MovieDetailsViewModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/MovieDetailsActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="81" column="45" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="45" />
-          <folding>
-            <element signature="e#54#710#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_movie_details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="167" column="61" selection-start-line="167" selection-start-column="61" selection-end-line="167" selection-end-column="61" />
-          <folding>
-            <element signature="e#3503#3527#0" expanded="true" />
-            <element signature="e#3759#3770#0" expanded="true" />
-            <element signature="e#4530#4541#0" expanded="true" />
-            <element signature="e#5986#6007#0" expanded="true" />
-            <element signature="e#6237#6248#0" expanded="true" />
-            <element signature="e#6922#6933#0" expanded="true" />
-            <element signature="e#8539#8550#0" expanded="true" />
-            <element signature="e#9229#9240#0" expanded="true" />
-            <element signature="e#11429#11452#0" expanded="true" />
-            <element signature="e#12079#12101#0" expanded="true" />
-            <element signature="e#12397#12408#0" expanded="true" />
-            <element signature="e#12731#12752#0" expanded="true" />
-            <element signature="e#14780#14791#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -1004,6 +950,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/ListMoviesActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Converters.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#57#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="e#57#276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/MovieDao.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -1014,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/ListMoviesActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/ListMoviesViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -1028,17 +994,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Movie.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/viewmodel/MovieDetailsViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
+        <state relative-caret-position="384">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/local/LocalDatabase.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Genre.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="306">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/view/activity/MovieDetailsActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="89" column="41" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
+          <folding>
+            <element signature="e#54#710#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_movie_details.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="264" column="42" selection-start-line="264" selection-start-column="42" selection-end-line="264" selection-end-column="42" />
+          <folding>
+            <element signature="e#3503#3527#0" expanded="true" />
+            <element signature="e#3759#3770#0" expanded="true" />
+            <element signature="e#4530#4541#0" expanded="true" />
+            <element signature="e#5986#6007#0" expanded="true" />
+            <element signature="e#6237#6248#0" expanded="true" />
+            <element signature="e#6922#6933#0" expanded="true" />
+            <element signature="e#8539#8550#0" expanded="true" />
+            <element signature="e#9229#9240#0" expanded="true" />
+            <element signature="e#11429#11452#0" expanded="true" />
+            <element signature="e#12079#12101#0" expanded="true" />
+            <element signature="e#12397#12408#0" expanded="true" />
+            <element signature="e#12731#12752#0" expanded="true" />
+            <element signature="e#14780#14791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/rafaelsouza/moviesinvolves/repository/model/Movie.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="63" column="39" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
         </state>
       </provider>
     </entry>

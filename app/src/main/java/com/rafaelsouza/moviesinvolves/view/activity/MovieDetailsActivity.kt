@@ -87,6 +87,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         txtBudgetInfo.text = Utils().currencyFormat(movie.budget.toString())
         txtRevenueInfo.text = Utils().currencyFormat(movie.revenue.toString())
         txtVotesInfo.text = movie.votes.toString()
+        txtGenreInfo.text = movie.getAllGenteToString()
 
 
     }

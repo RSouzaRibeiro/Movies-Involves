@@ -54,12 +54,15 @@ class Movie {
     @SerializedName("vote_count")
     var votes: Long? = null
 
-
-
-
-
-
-    /*@ColumnInfo(name = "genres")
+    @ColumnInfo(name = "genres")
     @SerializedName("genres")
-    var genres: ArrayList<Genre>? = null*/
+    var genres: ArrayList<Genre>? = null
+
+    fun getAllGenteToString(): String {
+        var genresList = ""
+        this.genres?.forEach {
+            genresList+= "${it.name},\n"
+        }
+        return genresList
+    }
 }
