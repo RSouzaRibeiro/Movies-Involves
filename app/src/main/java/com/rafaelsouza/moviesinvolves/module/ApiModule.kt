@@ -3,7 +3,9 @@ package com.rafaelsouza.moviesinvolves.module
 import android.arch.persistence.room.Room
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import android.preference.PreferenceManager
+import android.support.annotation.RequiresApi
 import com.rafaelsouza.moviesinvolves.R
 import com.rafaelsouza.moviesinvolves.repository.Ambiente
 import com.rafaelsouza.moviesinvolves.repository.Service
@@ -15,6 +17,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -22,6 +25,7 @@ class ApiModule(val context: Context) {
 
     @Provides
     fun getAmbiente(): Ambiente = Ambiente.DESENVOLVIMENTO
+
 
     @Provides
     @Singleton

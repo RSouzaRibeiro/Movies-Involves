@@ -4,13 +4,15 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
+import android.widget.ImageView
 import android.widget.SearchView
-import android.widget.Toast
+
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
+
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.view.adapter.MovieAdapter
 import com.rafaelsouza.moviesinvolves.viewmodel.ListMoviesViewModel
@@ -18,11 +20,13 @@ import com.rafaelsouza.moviesinvolves.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_list_movies.*
 import javax.inject.Inject
 
+
 class ListMoviesActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory<ListMoviesViewModel>
     var viewModel: ListMoviesViewModel? = null
+    var mSearch: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +56,11 @@ class ListMoviesActivity : AppCompatActivity() {
 
     private fun swipeRefreshConfig() {
         swipeRefresh.setOnRefreshListener {
-            viewModel?.getMovies()
+            if (mSearch.isNullOrEmpty())
+                viewModel?.getMovies()
+            else {
+                viewModel?.getSearchMovies(mSearch!!)
+            }
         }
     }
 
@@ -72,6 +80,7 @@ class ListMoviesActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(search: String?): Boolean {
                 if (!search.isNullOrEmpty()) {
+                    mSearch = search
                     viewModel?.getSearchMovies(search)
                 }
                 return false
@@ -79,6 +88,7 @@ class ListMoviesActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(search: String?): Boolean {
                 if (!search.isNullOrEmpty()) {
+                    mSearch = search
                     viewModel?.getSearchMovies(search)
                 }
 
@@ -86,6 +96,12 @@ class ListMoviesActivity : AppCompatActivity() {
             }
 
         })
+
+        searchView.setOnCloseListener {
+            mSearch = ""
+            viewModel?.getMovies()
+            false
+        }
 
         return super.onCreateOptionsMenu(menu)
     }

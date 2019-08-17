@@ -4,11 +4,12 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
-import com.rafaelsouza.moviesinvolves.util.DateUtils
+import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.viewmodel.MovieDetailsViewModel
 import com.rafaelsouza.moviesinvolves.viewmodel.ViewModelFactory
 import com.squareup.picasso.Picasso
@@ -33,6 +34,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie_details)
         (application as BaseApplication).graph.inject(this)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieDetailsViewModel::class.java)
+        initToolbar()
         doBinds()
         intent.extras.get(MOVIE_ID)?.let {
             viewModel?.getMovieById(it.toString(), getString(R.string.API_KEY))
@@ -58,12 +60,33 @@ class MovieDetailsActivity : AppCompatActivity() {
         })
     }
 
+    private fun initToolbar() {
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 
     private fun initView(movie: Movie) {
         movie.backdropPath?.let { setPoster(it) }
+        supportActionBar?.title = movie.title
         txtRatingNumber.text = movie.voteAverage.toString()
-        txtReleaseDate.text= DateUtils().formatDate(movie.releaseDate)
+        txtReleaseDate.text= Utils().formatDate(movie.releaseDate)
         txtSinopse.text = movie.overview
+        txtRumtimeInfo.text = Utils().convertMinutsToHour(movie.runtime!!)
+        txtBudgetInfo.text = Utils().currencyFormat(movie.budget.toString())
+        txtRevenueInfo.text = Utils().currencyFormat(movie.revenue.toString())
+        txtVotesInfo.text = movie.votes.toString()
 
 
     }
@@ -72,9 +95,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         Picasso.with(this)
             .load(getString(R.string.PATH_GET_IMAGE) + imagePath)
             .placeholder(R.mipmap.placeholder_movie)
-            .resize(320, 250)
+            .resize(320, 230)
             .centerCrop()
-            .into(posterMovieIMG)
+            .into(imgPosterMovie)
 
 
     }

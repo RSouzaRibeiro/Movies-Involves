@@ -9,8 +9,10 @@ import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class ListMoviesViewModel : BaseViewModel {
 
@@ -36,6 +38,7 @@ class ListMoviesViewModel : BaseViewModel {
             .subscribe(
                 {
                     movies.value = it
+                    it.results?.let { it -> insertUser(it) }
                 },
                 {
                     error.value = it.localizedMessage
@@ -75,4 +78,6 @@ class ListMoviesViewModel : BaseViewModel {
                 }, {})
         )
     }
+
+
 }

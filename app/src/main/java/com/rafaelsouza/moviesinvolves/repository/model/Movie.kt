@@ -38,6 +38,26 @@ class Movie {
     @SerializedName("overview")
     var overview: String? = null
 
+    @ColumnInfo(name = "runtime")
+    @SerializedName("runtime")
+    var runtime: Long? = null
+
+    @ColumnInfo(name = "budget")
+    @SerializedName("budget")
+    var budget: Long? = null
+
+    @ColumnInfo(name = "revenue")
+    @SerializedName("revenue")
+    var revenue: Long? = null
+
+    @ColumnInfo(name = "vote_count")
+    @SerializedName("vote_count")
+    var votes: Long? = null
+
+
+
+
+
 
     /*@ColumnInfo(name = "genres")
     @SerializedName("genres")

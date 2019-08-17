@@ -21,17 +21,21 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:contentScrim="@color/colorPrimaryDark"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                         android:layout_height="match_parent">
+                <ImageView
+                        android:id="@+id/imgPosterMovie"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:scaleType="fitXY"
+                        app:layout_collapseMode="parallax"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-            <ImageView
-                    android:id="@+id/posterMovieIMG"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:scaleType="fitXY"
-                    app:layout_collapseMode="parallax"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -53,15 +57,41 @@
                     android:layout_marginTop="8dp"
                     style="@style/CardViewStyle"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:id="@+id/cardinfo1"
-                    app:layout_constraintEnd_toStartOf="@+id/cardView2"
+                    android:id="@+id/cardRumtime"
+                    app:layout_constraintEnd_toStartOf="@+id/cardVotes"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp">
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
+                    <TextView
+                            android:text="@string/label_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtRumTime"
+                            android:textSize="@dimen/T5"
+                            android:textColor="@color/textBlack"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.515"
+                            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+                    <TextView
+                            android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/txtRumtimeInfo"
+                            android:textSize="@dimen/T6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/txtRumTime"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
 
+                </android.support.constraint.ConstraintLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -70,68 +100,77 @@
                     android:layout_marginTop="8dp"
                     style="@style/CardViewStyle"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:id="@+id/cardView2">
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="8dp"
-                    style="@style/CardViewStyle"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/cardView2"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp">
+                    android:layout_marginRight="8dp"
+                    android:id="@+id/cardVotes">
                 <android.support.constraint.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                    <ImageView
-                            android:layout_width="23dp"
-                            android:layout_height="22dp"
-                            android:src="@mipmap/icon_imdb"
-                            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/imageView"/>
-                    <ImageView
-                            android:layout_width="23dp"
-                            android:layout_height="22dp"
-                            android:src="@drawable/ic_star"
-                            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:id="@+id/imgStar" android:layout_marginTop="12dp"
-                            app:layout_constraintTop_toTopOf="parent"/>
+
+
+                    <TextView
+                            android:text="@string/label_votes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtVotes"
+                            android:textSize="@dimen/T5"
+                            android:textColor="@color/textBlack"
+                            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+                    <TextView
+                           android:text="-"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/txtVotesInfo"
+                            android:textSize="@dimen/T5"
+                            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/txtVotes"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="8dp"
+                    style="@style/CardViewStyle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cardVotes"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/cardEverage">
+                <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                     <TextView
                             android:text="@string/label_rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/txtRating"
-                            android:textSize="@dimen/T7"
+                            android:textSize="@dimen/T5"
                             android:textColor="@color/textBlack"
-                            app:layout_constraintStart_toEndOf="@+id/imageView"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginBottom="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.0"
-                            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/txtRatingNumber"/>
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toTopOf="parent"/>
                     <TextView
-                            android:text="8.8"
+                            android:text="-"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/txtRatingNumber"
-                            android:textSize="@dimen/T3"
-                            android:textColor="@color/textBlack"
-                            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/imgStar" android:layout_marginStart="8dp"
-                            android:layout_marginLeft="8dp"/>
+                            android:textSize="@dimen/T5"
+                            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintTop_toBottomOf="@+id/txtRating"/>
                 </android.support.constraint.ConstraintLayout>
 
             </android.support.v7.widget.CardView>
@@ -140,14 +179,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     style="@style/CardViewStyle"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                    app:layout_constraintTop_toBottomOf="@+id/cardVotes"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-                    android:layout_marginTop="16dp" android:id="@+id/cardInfo"
-            >
+                    android:layout_marginTop="16dp" android:id="@+id/cardInfo">
                 <android.support.constraint.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -166,27 +204,26 @@
                             android:layout_marginLeft="8dp"
                             android:layout_marginStart="8dp"/>
                     <TextView
-                            android:text="Release Date"
+                            android:text="@string/label_revenue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/txtDirector"
+                            android:id="@+id/txtRevenue"
                             android:textColor="@color/textBlack"
                             android:textSize="@dimen/T6"
                             android:layout_marginTop="8dp"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginEnd="72dp" app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginRight="72dp"/>
+                            app:layout_constraintStart_toEndOf="@+id/txtRelease" android:layout_marginStart="100dp"/>
                     <TextView
-                            android:text="Release Date"
+                            android:text="@string/label_budget"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/txtMediaScore"
+                            android:id="@+id/txtBudget"
                             android:textColor="@color/textBlack"
                             android:textSize="@dimen/T6"
-                            android:layout_marginEnd="80dp" app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginRight="80dp"
-                            app:layout_constraintStart_toStartOf="@+id/txtDirector" android:layout_marginTop="8dp"
-                            app:layout_constraintTop_toBottomOf="@+id/txtDirectorInfo"/>
+                            app:layout_constraintTop_toBottomOf="@+id/txtRevenueInfo"
+                            app:layout_constraintStart_toStartOf="@+id/txtRevenue"
+                            android:layout_marginTop="8dp"
+                    />
                     <TextView
                             android:text="@string/label_genre"
                             android:layout_width="wrap_content"
@@ -208,23 +245,23 @@
                             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/txtRelease"
                             android:layout_marginLeft="8dp"/>
                     <TextView
-                            android:text="12/12/2019"
+                            android:text=""
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/T7"
-                            android:id="@+id/txtDirectorInfo"
+                            android:id="@+id/txtRevenueInfo"
                             android:layout_marginTop="4dp"
-                            app:layout_constraintTop_toBottomOf="@+id/txtDirector" android:layout_marginStart="8dp"
-                            app:layout_constraintStart_toStartOf="@+id/txtDirector" android:layout_marginLeft="8dp"/>
+                            app:layout_constraintTop_toBottomOf="@+id/txtRevenue" android:layout_marginStart="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/txtRevenue"/>
                     <TextView
-                            android:text="12/12/2019"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/T7"
-                            android:id="@+id/txtMediaScoreInfo"
-                            app:layout_constraintStart_toStartOf="@+id/txtMediaScore" android:layout_marginLeft="8dp"
+                            android:id="@+id/txtBudgetInfo"
+                            app:layout_constraintStart_toStartOf="@+id/txtBudget" android:layout_marginLeft="8dp"
                             android:layout_marginStart="8dp" android:layout_marginTop="4dp"
-                            app:layout_constraintTop_toBottomOf="@+id/txtMediaScore"/>
+                            app:layout_constraintTop_toBottomOf="@+id/txtBudget"/>
                     <TextView
                             android:text="12/12/2019"
                             android:layout_width="wrap_content"

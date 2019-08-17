@@ -8,12 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.rafaelsouza.moviesinvolves.R
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
-import com.rafaelsouza.moviesinvolves.util.DateUtils
+import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.view.activity.MovieDetailsActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
-import java.text.ParseException
-import java.text.SimpleDateFormat
+
 
 class MovieAdapter(val context: Context, val movies: ArrayList<Movie>) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
@@ -30,7 +29,7 @@ class MovieAdapter(val context: Context, val movies: ArrayList<Movie>) :
         var movie = movies[position]
 
         holder.itemView.txtTitle.text = movie.title
-        holder.itemView.txtDateRelease.text = DateUtils().formatDate(movie.releaseDate)
+        holder.itemView.txtDateRelease.text = Utils().formatDate(movie.releaseDate)
 
         Picasso.with(context)
             .load(context.getString(R.string.PATH_GET_IMAGE) + movie.imagePath)

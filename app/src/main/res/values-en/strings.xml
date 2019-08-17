@@ -6,4 +6,9 @@
     <string name="label_rating">Rating</string>
     <string name="label_overview">Overview</string>
     <string name="label_genre">Genre</string>
+    <string name="label_undefined">Undefined</string>
+    <string name="label_duration">Rum time</string>
+    <string name="label_budget">Budget</string>
+    <string name="label_revenue">Bilheteria</string>
+    <string name="label_votes">Votes</string>
 </resources>
