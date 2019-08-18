@@ -4,15 +4,11 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
-import android.widget.ImageView
 import android.widget.SearchView
-
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
-
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.view.adapter.MovieAdapter
 import com.rafaelsouza.moviesinvolves.viewmodel.ListMoviesViewModel
@@ -21,12 +17,31 @@ import kotlinx.android.synthetic.main.activity_list_movies.*
 import javax.inject.Inject
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 class ListMoviesActivity : AppCompatActivity() {
+
+
+    companion object {
+        const val EXTRA_SEARCH = "mSearch"
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory<ListMoviesViewModel>
     var viewModel: ListMoviesViewModel? = null
-    var mSearch: String = ""
+    var mSearch: String? = ""
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,13 +51,18 @@ class ListMoviesActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ListMoviesViewModel::class.java)
         doBinds()
         swipeRefreshConfig()
-        viewModel?.getMovies()
+        getMovies()
+
+
     }
+
+
+
+
 
     private fun doBinds() {
         viewModel?.movies?.observe(this, Observer {
             it?.results?.let { it -> initRecycleView(it) }
-
         })
 
         viewModel?.progress?.observe(this, Observer {
@@ -54,17 +74,23 @@ class ListMoviesActivity : AppCompatActivity() {
         })
     }
 
+
+
     private fun swipeRefreshConfig() {
         swipeRefresh.setOnRefreshListener {
-            if (mSearch.isNullOrEmpty())
-                viewModel?.getMovies()
-            else {
-                viewModel?.getSearchMovies(mSearch!!)
-            }
+            getMovies()
         }
     }
 
-    private fun initRecycleView(result: ArrayList<Movie>) {
+    private fun getMovies(page: Int = 1) {
+        if (mSearch.isNullOrEmpty())
+            viewModel?.getMovies(page)
+        else {
+            viewModel?.getSearchMovies(mSearch!!)
+        }
+    }
+
+    private fun initRecycleView(result: List<Movie>) {
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.adapter = MovieAdapter(this, result)
 
@@ -81,7 +107,7 @@ class ListMoviesActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(search: String?): Boolean {
                 if (!search.isNullOrEmpty()) {
                     mSearch = search
-                    viewModel?.getSearchMovies(search)
+                    getMovies()
                 }
                 return false
             }
@@ -89,7 +115,7 @@ class ListMoviesActivity : AppCompatActivity() {
             override fun onQueryTextChange(search: String?): Boolean {
                 if (!search.isNullOrEmpty()) {
                     mSearch = search
-                    viewModel?.getSearchMovies(search)
+                    getMovies()
                 }
 
                 return false

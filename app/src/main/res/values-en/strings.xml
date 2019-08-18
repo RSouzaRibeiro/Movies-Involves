@@ -9,6 +9,6 @@
     <string name="label_undefined">Undefined</string>
     <string name="label_duration">Rum time</string>
     <string name="label_budget">Budget</string>
-    <string name="label_revenue">Bilheteria</string>
+    <string name="label_revenue">Revenue</string>
     <string name="label_votes">Votes</string>
 </resources>

@@ -12,6 +12,7 @@ import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.viewmodel.MovieDetailsViewModel
 import com.rafaelsouza.moviesinvolves.viewmodel.ViewModelFactory
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
@@ -97,6 +98,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             .load(getString(R.string.PATH_GET_IMAGE) + imagePath)
             .placeholder(R.mipmap.placeholder_movie)
             .resize(320, 230)
+            .networkPolicy(NetworkPolicy.NO_STORE)
             .centerCrop()
             .into(imgPosterMovie)
 

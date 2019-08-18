@@ -5,14 +5,15 @@ import com.rafaelsouza.moviesinvolves.repository.model.Movie
 
 class MoviesRequest {
 
-    constructor(results: ArrayList<Movie>) {
+    constructor(results: List<Movie>) {
         this.results = results
+        this.page = 1
 
     }
 
 
     @SerializedName("results")
-    var results: ArrayList<Movie>? =null
+    var results: List<Movie>? =null
 
     @SerializedName("page")
     var page : Int? =null

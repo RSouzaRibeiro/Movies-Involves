@@ -2,8 +2,10 @@ package com.rafaelsouza.moviesinvolves.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.content.SharedPreferences
+import com.rafaelsouza.moviesinvolves.extension.androidSubscribe
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -13,9 +15,8 @@ class MovieDetailsViewModel: BaseViewModel {
     @Inject
     constructor()
 
-
     @Inject
-    lateinit var sharedPref: SharedPreferences
+    lateinit var localDb: LocalDatabase
 
     var movie = MutableLiveData<Movie>()
     var progress = MutableLiveData<Boolean>()
@@ -24,8 +25,7 @@ class MovieDetailsViewModel: BaseViewModel {
 
     fun getMovieById(movieId: String, apiKey:String){
         disposables.add(service.getMovieById(movieId, apiKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .androidSubscribe()
             .doOnSubscribe{progress.value =true }
             .doFinally{ progress.value =false }
             .subscribe(
@@ -33,10 +33,25 @@ class MovieDetailsViewModel: BaseViewModel {
                     movie.value = it
                 },
                 {
-                    error.value = it.localizedMessage
+                    getMoviesLocal(movieId.toInt())
                 }
             ))
 
+    }
+
+    fun getMoviesLocal(id: Int ) {
+        disposables.add(
+            Single
+                .fromCallable { localDb.movieDao().getMovie(id) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    movie.value = it
+                },
+                    {
+                        error.value = it.localizedMessage
+                    })
+        )
     }
 
 

@@ -60,9 +60,6 @@ class ApiModule(val context: Context) {
     fun getDatabase(): LocalDatabase =
         Room.databaseBuilder(context.applicationContext, LocalDatabase::class.java, "local_storage").build()
 
-    @Provides
-    fun getSharedPref(): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-    }
+
 
 }

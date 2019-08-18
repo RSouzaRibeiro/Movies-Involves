@@ -10,11 +10,14 @@ import java.util.*
 interface Service {
 
     @GET("movie/upcoming")
-    fun listAllMovies(@Query("language") language: String = Locale.getDefault().toLanguageTag()): Observable<MoviesRequest>
+    fun listAllMovies(@Query("page") page: Int = 1,
+                      @Query("language") language: String = Locale.getDefault().toLanguageTag()): Observable<MoviesRequest>
 
     @GET("search/movie")
-    fun search(@Query("query") query: String,
-               @Query("language") language: String = Locale.getDefault().toLanguageTag()): Observable<MoviesRequest>
+    fun search(
+        @Query("query") query: String,
+        @Query("language") language: String = Locale.getDefault().toLanguageTag()
+    ): Observable<MoviesRequest>
 
     @GET("movie/{movie_id}")
     fun getMovieById(

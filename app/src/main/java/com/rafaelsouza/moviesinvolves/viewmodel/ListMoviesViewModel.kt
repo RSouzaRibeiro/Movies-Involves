@@ -1,7 +1,9 @@
 package com.rafaelsouza.moviesinvolves.viewmodel
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.content.SharedPreferences
+import com.rafaelsouza.moviesinvolves.extension.androidSubscribe
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.repository.request.MoviesRequest
@@ -22,60 +24,82 @@ class ListMoviesViewModel : BaseViewModel {
     @Inject
     lateinit var localDb: LocalDatabase
 
-    @Inject
-    lateinit var sharedPref: SharedPreferences
 
     var movies = MutableLiveData<MoviesRequest>()
     var progress = MutableLiveData<Boolean>()
     var error = MutableLiveData<String>()
 
-    fun getMovies() {
-        disposables.add(service.listAllMovies()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    fun getMovies(page: Int =1) {
+        disposables.add(service.listAllMovies(page)
+            .androidSubscribe()
             .doOnSubscribe { progress.value = true }
             .doFinally { progress.value = false }
             .subscribe(
                 {
+                    it.results?.forEach { it -> insertMovies(it) }
                     movies.value = it
-                    it.results?.let { it -> insertUser(it) }
+
                 },
                 {
-                    error.value = it.localizedMessage
+
+                    getAllMoviesLocal()
+
                 }
             ))
 
     }
 
     fun getSearchMovies(search: String) {
-        disposables.add(service.search(search)
-            .debounce(500, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { progress.value = true }
-            .doFinally { progress.value = false }
-            .subscribe(
-                {
-                    movies.value = it
-                    it.results?.let { it -> insertUser(it) }
-                },
-                {
-                    error.value = it.localizedMessage
+        if (search.length > 2) {
+            disposables.add(service.search(search)
+                .debounce(500, TimeUnit.MILLISECONDS)
+                .androidSubscribe()
+                .doOnSubscribe { progress.value = true }
+                .doFinally { progress.value = false }
+                .subscribe(
+                    {
+                        movies.value = it
+                        it.results?.forEach { it -> insertMovies(it) }
+                    },
+                    {
+                        error.value = it.localizedMessage
 
-                }
-            ))
+                    }
+                ))
+        }
+
 
     }
 
 
-    private fun insertUser(movie: ArrayList<Movie>) {
+    private fun insertMovies(movie: Movie) {
         disposables.add(
             Single
-                .fromCallable { localDb.movieDao().insertAllMovie(movie) }
+                .fromCallable { localDb.movieDao().insertMovie(movie) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                }, {})
+
+                },
+                    {
+                        error.value = it.localizedMessage
+                    })
+        )
+    }
+
+
+    fun getAllMoviesLocal() {
+        disposables.add(
+            Single
+                .fromCallable { localDb.movieDao().getAllMovie() }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    movies.value = MoviesRequest(it)
+                },
+                    {
+                        error.value = it.localizedMessage
+                    })
         )
     }
 

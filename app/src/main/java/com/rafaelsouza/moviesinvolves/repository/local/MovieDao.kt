@@ -1,6 +1,5 @@
 package com.rafaelsouza.moviesinvolves.repository.local
 
-import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 
@@ -10,19 +9,16 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovie(movie: Movie)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllMovie(movie: ArrayList<Movie>)
-
     @Update
     fun updateMovie(movie: Movie)
 
     @Delete
     fun deleteMovie(movie: Movie)
 
-    /*@Query("SELECT * FROM movie ")
-    fun getAllMovie(): ArrayList<Movie>*/
+    @Query("SELECT * FROM movie ")
+    fun getAllMovie(): List<Movie>
 
     @Query("SELECT * FROM movie WHERE id = :arg")
-    fun getMovie(arg: String): LiveData<Movie>
+    fun getMovie(arg: Int): Movie
 
 }
