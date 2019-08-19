@@ -1,14 +1,19 @@
 package com.rafaelsouza.moviesinvolves.view.activity
 
+import android.app.Dialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
+import android.view.Window
+import android.widget.Button
 import android.widget.SearchView
+import android.widget.TextView
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
+import com.rafaelsouza.moviesinvolves.extension.showDialogError
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.view.adapter.MovieAdapter
 import com.rafaelsouza.moviesinvolves.viewmodel.ListMoviesViewModel
@@ -70,7 +75,7 @@ class ListMoviesActivity : AppCompatActivity() {
         })
 
         viewModel?.error?.observe(this, Observer {
-
+            Dialog(this).showDialogError(this, it!!)
         })
     }
 
@@ -131,4 +136,6 @@ class ListMoviesActivity : AppCompatActivity() {
 
         return super.onCreateOptionsMenu(menu)
     }
+
+
 }

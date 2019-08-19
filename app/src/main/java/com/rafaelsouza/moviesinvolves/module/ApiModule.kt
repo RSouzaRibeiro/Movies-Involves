@@ -2,12 +2,8 @@ package com.rafaelsouza.moviesinvolves.module
 
 import android.arch.persistence.room.Room
 import android.content.Context
-import android.content.SharedPreferences
-import android.os.Build
-import android.preference.PreferenceManager
-import android.support.annotation.RequiresApi
+import com.rafaelsouza.moviesinvolves.BuildConfig
 import com.rafaelsouza.moviesinvolves.R
-import com.rafaelsouza.moviesinvolves.repository.Ambiente
 import com.rafaelsouza.moviesinvolves.repository.Service
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
 import dagger.Module
@@ -17,20 +13,18 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 import javax.inject.Singleton
 
 @Module
-class ApiModule(val context: Context) {
+class ApiModule(private val context: Context) {
 
-    @Provides
-    fun getAmbiente(): Ambiente = Ambiente.DESENVOLVIMENTO
+
 
 
     @Provides
     @Singleton
     fun getRetrofit(): Retrofit {
-        val ambiente = getAmbiente()
+        val ambiente = BuildConfig.SERVER_URL
 
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -47,7 +41,7 @@ class ApiModule(val context: Context) {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .baseUrl(ambiente.getUrl())
+            .baseUrl(ambiente)
             .client(httpClient)
             .build()
     }

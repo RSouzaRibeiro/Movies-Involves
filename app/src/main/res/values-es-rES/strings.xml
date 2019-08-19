@@ -11,4 +11,5 @@
     <string name="label_budget">Presupuesto</string>
     <string name="label_revenue">Bilheteria</string>
     <string name="label_votes">Votos</string>
+    <string name="message_insert_success">Filme adicionado aos favoritos!</string>
 </resources>

@@ -11,4 +11,5 @@
     <string name="label_budget">Budget</string>
     <string name="label_revenue">Revenue</string>
     <string name="label_votes">Votes</string>
+    <string name="message_insert_success">Filme adicionado aos favoritos!</string>
 </resources>

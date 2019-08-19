@@ -1,5 +1,6 @@
 package com.rafaelsouza.moviesinvolves.view.activity
 
+import android.app.Dialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +9,8 @@ import android.view.MenuItem
 import android.view.View
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
+import com.rafaelsouza.moviesinvolves.extension.showDialogSucess
+
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.viewmodel.MovieDetailsViewModel
@@ -29,6 +32,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory<MovieDetailsViewModel>
     var viewModel: MovieDetailsViewModel? = null
+    private lateinit var movie: Movie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieDetailsViewModel::class.java)
         initToolbar()
         doBinds()
+        setListners()
         intent.extras.get(MOVIE_ID)?.let {
             viewModel?.getMovieById(it.toString(), getString(R.string.API_KEY))
         }
@@ -45,7 +50,11 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun doBinds() {
         viewModel?.movie?.observe(this, Observer {
-            it?.let { it -> initView(it) }
+            it?.let {
+                    it ->
+                initView(it)
+                movie = it
+            }
         })
 
         viewModel?.progress?.observe(this, Observer { isProgress ->
@@ -54,6 +63,10 @@ class MovieDetailsActivity : AppCompatActivity() {
             } else {
                 progressBar.visibility = View.GONE
             }
+        })
+
+        viewModel?.sucess?.observe(this, Observer {
+                Dialog(this).showDialogSucess(this, it!!)
         })
 
         viewModel?.error?.observe(this, Observer {
@@ -66,6 +79,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> {
@@ -77,12 +91,11 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
 
-
     private fun initView(movie: Movie) {
         movie.backdropPath?.let { setPoster(it) }
         supportActionBar?.title = movie.title
         txtRatingNumber.text = movie.voteAverage.toString()
-        txtReleaseDate.text= Utils().formatDate(movie.releaseDate)
+        txtReleaseDate.text = Utils().formatDate(movie.releaseDate)
         txtSinopse.text = movie.overview
         txtRumtimeInfo.text = Utils().convertMinutsToHour(movie.runtime!!)
         txtBudgetInfo.text = Utils().currencyFormat(movie.budget.toString())
@@ -103,6 +116,13 @@ class MovieDetailsActivity : AppCompatActivity() {
             .into(imgPosterMovie)
 
 
+    }
+
+    private fun setListners() {
+        btnFloatFavorite.setOnClickListener {
+            if(movie!=null)
+            viewModel?.insertMovieLocal(movie)
+        }
     }
 
 

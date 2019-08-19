@@ -1,20 +1,15 @@
 package com.rafaelsouza.moviesinvolves.viewmodel
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.content.SharedPreferences
 import com.rafaelsouza.moviesinvolves.extension.androidSubscribe
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.repository.request.MoviesRequest
-import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 class ListMoviesViewModel : BaseViewModel {
 
@@ -36,14 +31,10 @@ class ListMoviesViewModel : BaseViewModel {
             .doFinally { progress.value = false }
             .subscribe(
                 {
-                    it.results?.forEach { it -> insertMovies(it) }
                     movies.value = it
-
                 },
                 {
-
                     getAllMoviesLocal()
-
                 }
             ))
 
@@ -59,11 +50,10 @@ class ListMoviesViewModel : BaseViewModel {
                 .subscribe(
                     {
                         movies.value = it
-                        it.results?.forEach { it -> insertMovies(it) }
+                        //it.results?.forEach { it -> insertMovieLocal(it) }
                     },
                     {
                         error.value = it.localizedMessage
-
                     }
                 ))
         }
@@ -72,7 +62,7 @@ class ListMoviesViewModel : BaseViewModel {
     }
 
 
-    private fun insertMovies(movie: Movie) {
+    private fun insertMovieLocal(movie: Movie) {
         disposables.add(
             Single
                 .fromCallable { localDb.movieDao().insertMovie(movie) }
