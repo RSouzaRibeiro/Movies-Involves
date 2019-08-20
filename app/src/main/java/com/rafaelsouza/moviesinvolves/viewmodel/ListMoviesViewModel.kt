@@ -32,6 +32,7 @@ class ListMoviesViewModel : BaseViewModel {
             .subscribe(
                 {
                     movies.value = it
+                    it.results?.forEach { it -> insertMovieLocal(it) }
                 },
                 {
                     getAllMoviesLocal()
@@ -50,10 +51,10 @@ class ListMoviesViewModel : BaseViewModel {
                 .subscribe(
                     {
                         movies.value = it
-                        //it.results?.forEach { it -> insertMovieLocal(it) }
+                        it.results?.forEach { it -> insertMovieLocal(it) }
                     },
                     {
-                        error.value = it.localizedMessage
+                        error.value = "Ops! Tivemos um problema!"
                     }
                 ))
         }
@@ -61,21 +62,6 @@ class ListMoviesViewModel : BaseViewModel {
 
     }
 
-
-    private fun insertMovieLocal(movie: Movie) {
-        disposables.add(
-            Single
-                .fromCallable { localDb.movieDao().insertMovie(movie) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-
-                },
-                    {
-                        error.value = it.localizedMessage
-                    })
-        )
-    }
 
 
     fun getAllMoviesLocal() {
@@ -86,6 +72,21 @@ class ListMoviesViewModel : BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     movies.value = MoviesRequest(it)
+                },
+                    {
+                        error.value = it.localizedMessage
+                    })
+        )
+    }
+
+    fun insertMovieLocal(movie: Movie) {
+        disposables.add(
+            Single
+                .fromCallable { localDb.movieDao().insertMovie(movie) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+
                 },
                     {
                         error.value = it.localizedMessage

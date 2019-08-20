@@ -45,7 +45,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         intent.extras.get(MOVIE_ID)?.let {
             viewModel?.getMovieById(it.toString(), getString(R.string.API_KEY))
         }
-
     }
 
     private fun doBinds() {

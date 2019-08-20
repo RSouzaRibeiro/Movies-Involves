@@ -10,6 +10,7 @@ import com.rafaelsouza.moviesinvolves.R
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
 import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.view.activity.MovieDetailsActivity
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 
@@ -34,6 +35,7 @@ class MovieAdapter(val context: Context, val movies: List<Movie>) :
         Picasso.with(context)
             .load(context.getString(R.string.PATH_GET_IMAGE) + movie.imagePath)
             .placeholder(R.mipmap.placeholder_movie)
+            .networkPolicy(NetworkPolicy.NO_STORE)
             .resize(160, 240)
             .into(holder.itemView.movieIMG)
 

@@ -4,7 +4,7 @@ import android.arch.persistence.room.Room
 import android.content.Context
 import com.rafaelsouza.moviesinvolves.BuildConfig
 import com.rafaelsouza.moviesinvolves.R
-import com.rafaelsouza.moviesinvolves.repository.Service
+import com.rafaelsouza.moviesinvolves.repository.service.ServiceMovie
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
 import dagger.Module
 import dagger.Provides
@@ -47,7 +47,7 @@ class ApiModule(private val context: Context) {
     }
 
     @Provides
-    fun getClient(): Service = getRetrofit().create(Service::class.java)
+    fun getClient(): ServiceMovie = getRetrofit().create(ServiceMovie::class.java)
 
     @Provides
     @Singleton

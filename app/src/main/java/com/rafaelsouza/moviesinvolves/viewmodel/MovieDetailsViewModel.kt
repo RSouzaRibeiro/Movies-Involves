@@ -16,6 +16,8 @@ class MovieDetailsViewModel : BaseViewModel {
     @Inject
     constructor()
 
+    constructor(p0: Any)
+
     @Inject
     lateinit var localDb: LocalDatabase
 

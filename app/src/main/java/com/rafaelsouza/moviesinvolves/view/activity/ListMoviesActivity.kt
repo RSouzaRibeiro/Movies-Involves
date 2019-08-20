@@ -46,9 +46,6 @@ class ListMoviesActivity : AppCompatActivity() {
     var viewModel: ListMoviesViewModel? = null
     var mSearch: String? = ""
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_movies)
@@ -57,13 +54,7 @@ class ListMoviesActivity : AppCompatActivity() {
         doBinds()
         swipeRefreshConfig()
         getMovies()
-
-
     }
-
-
-
-
 
     private fun doBinds() {
         viewModel?.movies?.observe(this, Observer {
@@ -78,8 +69,6 @@ class ListMoviesActivity : AppCompatActivity() {
             Dialog(this).showDialogError(this, it!!)
         })
     }
-
-
 
     private fun swipeRefreshConfig() {
         swipeRefresh.setOnRefreshListener {
@@ -98,8 +87,6 @@ class ListMoviesActivity : AppCompatActivity() {
     private fun initRecycleView(result: List<Movie>) {
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.adapter = MovieAdapter(this, result)
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -107,7 +94,6 @@ class ListMoviesActivity : AppCompatActivity() {
         val itemSearch = menu?.findItem(R.id.menuSearch)
         val searchView = itemSearch?.actionView as SearchView
         searchView.queryHint = getString(R.string.label_seach_code)
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(search: String?): Boolean {
                 if (!search.isNullOrEmpty()) {
@@ -122,10 +108,8 @@ class ListMoviesActivity : AppCompatActivity() {
                     mSearch = search
                     getMovies()
                 }
-
                 return false
             }
-
         })
 
         searchView.setOnCloseListener {
@@ -133,7 +117,6 @@ class ListMoviesActivity : AppCompatActivity() {
             viewModel?.getMovies()
             false
         }
-
         return super.onCreateOptionsMenu(menu)
     }
 

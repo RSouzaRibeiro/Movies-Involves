@@ -24,35 +24,35 @@ class Movie {
 
     @ColumnInfo(name = "poster_path")
     @SerializedName("poster_path")
-    var imagePath: String = ""
+    var imagePath: String? = ""
 
     @ColumnInfo(name = "backdrop_path")
     @SerializedName("backdrop_path")
-    var backdropPath: String = ""
+    var backdropPath: String? = ""
 
     @ColumnInfo(name = "vote_average")
     @SerializedName("vote_average")
-    var voteAverage: Float = 0F
+    var voteAverage: Float? = 0F
 
     @ColumnInfo(name = "overview")
     @SerializedName("overview")
-    var overview: String = ""
+    var overview: String? = ""
 
     @ColumnInfo(name = "runtime")
     @SerializedName("runtime")
-    var runtime: Long = 0
+    var runtime: Long? = 0
 
     @ColumnInfo(name = "budget")
     @SerializedName("budget")
-    var budget: Long = 0
+    var budget: Long? = 0
 
     @ColumnInfo(name = "revenue")
     @SerializedName("revenue")
-    var revenue: Long = 0
+    var revenue: Long? = 0
 
     @ColumnInfo(name = "vote_count")
     @SerializedName("vote_count")
-    var votes: Long = 0
+    var votes: Long? = 0
 
     @ColumnInfo(name = "genres")
     @SerializedName("genres")
