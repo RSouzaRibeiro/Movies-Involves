@@ -15,6 +15,7 @@ interface ServiceMovie {
 
     @GET("search/movie")
     fun search(
+        @Query("page") page: Int = 1,
         @Query("query") query: String,
         @Query("language") language: String = Locale.getDefault().toLanguageTag()
     ): Observable<MoviesRequest>

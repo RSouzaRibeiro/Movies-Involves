@@ -48,6 +48,12 @@ class MovieAdapter(val context: Context, val movies: List<Movie>) :
         }
     }
 
+    fun add(listmovie: List<Movie>){
+        (movies as ArrayList).addAll(listmovie)
+        notifyDataSetChanged()
+
+    }
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

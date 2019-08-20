@@ -41,9 +41,9 @@ class ListMoviesViewModel : BaseViewModel {
 
     }
 
-    fun getSearchMovies(search: String) {
+    fun getSearchMovies(page: Int=1,search: String) {
         if (search.length > 2) {
-            disposables.add(service.search(search)
+            disposables.add(service.search(page,search)
                 .debounce(500, TimeUnit.MILLISECONDS)
                 .androidSubscribe()
                 .doOnSubscribe { progress.value = true }

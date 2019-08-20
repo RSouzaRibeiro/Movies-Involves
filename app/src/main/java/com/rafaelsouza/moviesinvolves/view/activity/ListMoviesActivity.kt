@@ -1,10 +1,12 @@
 package com.rafaelsouza.moviesinvolves.view.activity
 
+import android.app.Activity
 import android.app.Dialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.Menu
 import android.view.Window
@@ -22,18 +24,6 @@ import kotlinx.android.synthetic.main.activity_list_movies.*
 import javax.inject.Inject
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 class ListMoviesActivity : AppCompatActivity() {
 
 
@@ -45,6 +35,8 @@ class ListMoviesActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelFactory<ListMoviesViewModel>
     var viewModel: ListMoviesViewModel? = null
     var mSearch: String? = ""
+    var currentPage = 1
+    lateinit var adapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +50,15 @@ class ListMoviesActivity : AppCompatActivity() {
 
     private fun doBinds() {
         viewModel?.movies?.observe(this, Observer {
-            it?.results?.let { it -> initRecycleView(it) }
+            currentPage = it?.page!!
+            if (currentPage == 1) {
+                it?.results?.let { it ->
+                    initRecycleView(it)
+                }
+            } else {
+                adapter.add(it?.results!!)
+            }
+
         })
 
         viewModel?.progress?.observe(this, Observer {
@@ -80,13 +80,26 @@ class ListMoviesActivity : AppCompatActivity() {
         if (mSearch.isNullOrEmpty())
             viewModel?.getMovies(page)
         else {
-            viewModel?.getSearchMovies(mSearch!!)
+            viewModel?.getSearchMovies(page, mSearch!!)
         }
     }
 
     private fun initRecycleView(result: List<Movie>) {
-        recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView.adapter = MovieAdapter(this, result)
+        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager = layoutManager
+        adapter = MovieAdapter(this, result)
+        recyclerView.adapter = adapter
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                val lastPosition = layoutManager.findLastVisibleItemPositions(null)
+                if (lastPosition[0] >= (recyclerView.adapter?.itemCount?.minus(3)!!)) {
+                    getMovies(currentPage + 1)
+                }
+
+
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
