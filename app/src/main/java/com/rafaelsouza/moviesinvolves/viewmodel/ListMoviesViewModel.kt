@@ -24,7 +24,7 @@ class ListMoviesViewModel : BaseViewModel {
     var progress = MutableLiveData<Boolean>()
     var error = MutableLiveData<String>()
 
-    fun getMovies(page: Int =1) {
+    fun getMovies(page: Int = 1) {
         disposables.add(service.listAllMovies(page)
             .androidSubscribe()
             .doOnSubscribe { progress.value = true }
@@ -38,12 +38,12 @@ class ListMoviesViewModel : BaseViewModel {
                     getAllMoviesLocal()
                 }
             ))
-
     }
 
-    fun getSearchMovies(page: Int=1,search: String) {
+
+    fun getSearchMovies(page: Int = 1, search: String) {
         if (search.length > 2) {
-            disposables.add(service.search(page,search)
+            disposables.add(service.search(page, search)
                 .debounce(500, TimeUnit.MILLISECONDS)
                 .androidSubscribe()
                 .doOnSubscribe { progress.value = true }
@@ -58,10 +58,7 @@ class ListMoviesViewModel : BaseViewModel {
                     }
                 ))
         }
-
-
     }
-
 
 
     fun getAllMoviesLocal() {
@@ -93,6 +90,5 @@ class ListMoviesViewModel : BaseViewModel {
                     })
         )
     }
-
 
 }

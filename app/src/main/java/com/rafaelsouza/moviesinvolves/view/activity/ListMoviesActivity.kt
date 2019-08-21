@@ -6,8 +6,11 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
+import android.os.PersistableBundle
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.Window
 import android.widget.Button
@@ -29,6 +32,7 @@ class ListMoviesActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_SEARCH = "mSearch"
+        const val STATE_RECYCLER = "stateRecycler"
     }
 
     @Inject
@@ -36,7 +40,8 @@ class ListMoviesActivity : AppCompatActivity() {
     var viewModel: ListMoviesViewModel? = null
     var mSearch: String? = ""
     var currentPage = 1
-    lateinit var adapter: MovieAdapter
+    var adapter: MovieAdapter? = null
+    var recyclerState: Parcelable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +50,19 @@ class ListMoviesActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ListMoviesViewModel::class.java)
         doBinds()
         swipeRefreshConfig()
-        getMovies()
+        recyclerState = savedInstanceState?.getParcelable(STATE_RECYCLER)
+        mSearch = savedInstanceState?.getString(EXTRA_SEARCH)
+        if (recyclerState != null) {
+            recyclerView.layoutManager?.onRestoreInstanceState(recyclerState)
+        } else {
+            getMovies()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putParcelable(STATE_RECYCLER, recyclerView.layoutManager?.onSaveInstanceState())
+        outState?.putString(EXTRA_SEARCH, mSearch)
     }
 
     private fun doBinds() {
@@ -56,7 +73,7 @@ class ListMoviesActivity : AppCompatActivity() {
                     initRecycleView(it)
                 }
             } else {
-                adapter.add(it?.results!!)
+                adapter?.add(it?.results!!)
             }
 
         })
@@ -95,10 +112,7 @@ class ListMoviesActivity : AppCompatActivity() {
                 val lastPosition = layoutManager.findLastVisibleItemPositions(null)
                 if (lastPosition[0] >= (recyclerView.adapter?.itemCount?.minus(3)!!)) {
                     getMovies(currentPage + 1)
-                }
-
-
-            }
+                }            }
         })
     }
 
@@ -124,6 +138,11 @@ class ListMoviesActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        if (!mSearch.isNullOrEmpty()) {
+            searchView.setQuery(mSearch, true)
+            searchView.isFocusable = true
+        }
 
         searchView.setOnCloseListener {
             mSearch = ""
