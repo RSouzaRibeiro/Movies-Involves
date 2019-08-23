@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Peliculas Involves</string>
+    <string name="label_seach_code">Buscar por nombre...</string>
+    <string name="label_release">Lanzamiento </string>
+    <string name="label_rating">Clasific.</string>
+    <string name="label_overview">Sinopsis</string>
+    <string name="label_genre">Género</string>
+    <string name="label_undefined">Indefinido</string>
+    <string name="label_duration">Tiempo</string>
+    <string name="label_budget">Presupuesto</string>
+    <string name="label_revenue">Bilheteria</string>
+    <string name="label_votes">Votos</string>
+    <string name="message_insert_success">Filme adicionado aos favoritos!</string>
+</resources>

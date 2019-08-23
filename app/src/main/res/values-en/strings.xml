@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movies Involves</string>
+    <string name="label_seach_code">Search by Name...</string>
+    <string name="label_release">Release </string>
+    <string name="label_rating">Rating</string>
+    <string name="label_overview">Overview</string>
+    <string name="label_genre">Genre</string>
+    <string name="label_undefined">Undefined</string>
+    <string name="label_duration">Rum time</string>
+    <string name="label_budget">Budget</string>
+    <string name="label_revenue">Revenue</string>
+    <string name="label_votes">Votes</string>
+    <string name="message_insert_success">Filme adicionado aos favoritos!</string>
+</resources>

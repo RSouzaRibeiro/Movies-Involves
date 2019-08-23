@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Movies Involves</string>
+    <string name="API_KEY">0174862c2d5f6d622dc1e8d63894428c</string>
+    <string name="PATH_GET_IMAGE">http://image.tmdb.org/t/p/original</string>
+
+
+    <string name="label_seach_code">Buscar por nome...</string>
+    <string name="label_release">Lançamento :</string>
+    <string name="label_rating">Média</string>
+    <string name="label_overview">Sinopse</string>
+    <string name="label_genre">Gênero</string>
+    <string name="label_undefined">Indefinido</string>
+    <string name="label_duration">Duração</string>
+    <string name="label_budget">Orçamento</string>
+    <string name="label_revenue">Bilheteria</string>
+    <string name="label_votes">Votos</string>
+    <string name="message_insert_success">Filme adicionado aos favoritos!</string>
+</resources>

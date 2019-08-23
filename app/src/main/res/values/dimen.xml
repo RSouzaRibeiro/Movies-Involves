@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="T0">36dp</dimen>
+    <dimen name="T1">30dp</dimen>
+    <dimen name="T2">26dp</dimen>
+    <dimen name="T3">24dp</dimen>
+    <dimen name="T4">20dp</dimen>
+    <dimen name="T5">18dp</dimen>
+    <dimen name="T6">14dp</dimen>
+    <dimen name="T7">12dp</dimen>
+    <dimen name="T8">8dp</dimen>
+    <dimen name="T9">4dp</dimen>
+    <dimen name="T10">2dp</dimen>
+</resources>
