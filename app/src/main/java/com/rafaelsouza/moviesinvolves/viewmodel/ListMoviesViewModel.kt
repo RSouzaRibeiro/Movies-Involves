@@ -1,10 +1,11 @@
 package com.rafaelsouza.moviesinvolves.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import com.rafaelsouza.moviesinvolves.extension.androidSubscribe
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
-import com.rafaelsouza.moviesinvolves.repository.request.MoviesRequest
+import com.rafaelsouza.moviesinvolves.repository.model.MoviesResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -20,7 +21,7 @@ class ListMoviesViewModel : BaseViewModel {
     lateinit var localDb: LocalDatabase
 
 
-    var movies = MutableLiveData<MoviesRequest>()
+    var movies = MutableLiveData<MoviesResponse>()
     var progress = MutableLiveData<Boolean>()
     var error = MutableLiveData<String>()
 
@@ -68,7 +69,8 @@ class ListMoviesViewModel : BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    movies.value = MoviesRequest(it)
+                    movies.value =
+                        MoviesResponse(it)
                 },
                     {
                         error.value = it.localizedMessage

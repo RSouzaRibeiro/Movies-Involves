@@ -9,10 +9,12 @@ import android.view.MenuItem
 import android.view.View
 import com.rafaelsouza.moviesinvolves.BaseApplication
 import com.rafaelsouza.moviesinvolves.R
+import com.rafaelsouza.moviesinvolves.extension.convertMinutsToHour
+import com.rafaelsouza.moviesinvolves.extension.currencyFormat
+import com.rafaelsouza.moviesinvolves.extension.formatDate
 import com.rafaelsouza.moviesinvolves.extension.showDialogSucess
 
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
-import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.viewmodel.MovieDetailsViewModel
 import com.rafaelsouza.moviesinvolves.viewmodel.ViewModelFactory
 import com.squareup.picasso.NetworkPolicy
@@ -41,7 +43,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(MovieDetailsViewModel::class.java)
         initToolbar()
         doBinds()
-        setListners()
         intent.extras.get(MOVIE_ID)?.let {
             viewModel?.getMovieById(it.toString(), getString(R.string.API_KEY))
         }
@@ -94,11 +95,11 @@ class MovieDetailsActivity : AppCompatActivity() {
         movie.backdropPath?.let { setPoster(it) }
         supportActionBar?.title = movie.title
         txtRatingNumber.text = movie.voteAverage.toString()
-        txtReleaseDate.text = Utils().formatDate(movie.releaseDate)
+        txtReleaseDate.text = movie.releaseDate.formatDate()
         txtSinopse.text = movie.overview
-        txtRumtimeInfo.text = Utils().convertMinutsToHour(movie.runtime!!)
-        txtBudgetInfo.text = Utils().currencyFormat(movie.budget.toString())
-        txtRevenueInfo.text = Utils().currencyFormat(movie.revenue.toString())
+        txtRumtimeInfo.text = movie.runtime!!.convertMinutsToHour()
+        txtBudgetInfo.text = movie.budget?.currencyFormat()
+        txtRevenueInfo.text =movie.revenue?.currencyFormat()
         txtVotesInfo.text = movie.votes.toString()
         txtGenreInfo.text = movie.getAllGenteToString()
 
@@ -117,12 +118,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun setListners() {
-        btnFloatFavorite.setOnClickListener {
-            if(movie!=null)
-            viewModel?.insertMovieLocal(movie)
-        }
-    }
+
 
 
 }

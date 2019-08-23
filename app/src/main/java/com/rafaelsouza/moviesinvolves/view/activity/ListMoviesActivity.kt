@@ -33,6 +33,7 @@ class ListMoviesActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_SEARCH = "mSearch"
         const val STATE_RECYCLER = "stateRecycler"
+        const val POSITION_RECYCLER = "positionRecycler"
     }
 
     @Inject

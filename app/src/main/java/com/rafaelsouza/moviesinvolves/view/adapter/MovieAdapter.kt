@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rafaelsouza.moviesinvolves.R
+import com.rafaelsouza.moviesinvolves.extension.formatDate
 import com.rafaelsouza.moviesinvolves.repository.model.Movie
-import com.rafaelsouza.moviesinvolves.util.Utils
 import com.rafaelsouza.moviesinvolves.view.activity.MovieDetailsActivity
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
@@ -30,7 +30,7 @@ class MovieAdapter(val context: Context, val movies: List<Movie>) :
         var movie = movies[position]
 
         holder.itemView.txtTitle.text = movie.title
-        holder.itemView.txtDateRelease.text = Utils().formatDate(movie.releaseDate)
+        holder.itemView.txtDateRelease.text = movie.releaseDate.formatDate()
 
         Picasso.with(context)
             .load(context.getString(R.string.PATH_GET_IMAGE) + movie.imagePath)

@@ -1,6 +1,5 @@
 package com.rafaelsouza.moviesinvolves.repository.local
 
-import android.arch.persistence.db.SupportSQLiteOpenHelper
 import android.arch.persistence.room.*
 import com.rafaelsouza.moviesinvolves.repository.model.Converters
 import com.rafaelsouza.moviesinvolves.repository.model.Genre
@@ -13,17 +12,6 @@ abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
 
-    override fun clearAllTables() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun createOpenHelper(config: DatabaseConfiguration?): SupportSQLiteOpenHelper {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun createInvalidationTracker(): InvalidationTracker {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 
 }

@@ -33,7 +33,7 @@ class ApiModule(private val context: Context) {
             .addInterceptor {
                 val requestBuilder = it.request().newBuilder()
                 requestBuilder.header("Accept", "application/json")
-                requestBuilder.header("Authorization", "Bearer " + context.getString(R.string.API_KEY))
+                requestBuilder.header("Authorization", BuildConfig.API_KEY)
                 it.proceed(requestBuilder.build())
             }
             .build()

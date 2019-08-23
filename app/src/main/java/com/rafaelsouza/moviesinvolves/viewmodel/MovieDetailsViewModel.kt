@@ -2,6 +2,7 @@ package com.rafaelsouza.moviesinvolves.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.content.SharedPreferences
+import android.util.Log
 import com.rafaelsouza.moviesinvolves.R
 import com.rafaelsouza.moviesinvolves.extension.androidSubscribe
 import com.rafaelsouza.moviesinvolves.repository.local.LocalDatabase
@@ -51,21 +52,6 @@ class MovieDetailsViewModel : BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     movie.value = it
-                },
-                    {
-                        error.value = it.localizedMessage
-                    })
-        )
-    }
-
-    fun insertMovieLocal(movie: Movie) {
-        disposables.add(
-            Single
-                .fromCallable { localDb.movieDao().insertMovie(movie) }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    sucess.value = "Filme adicionado aos favoritos!"
                 },
                     {
                         error.value = it.localizedMessage

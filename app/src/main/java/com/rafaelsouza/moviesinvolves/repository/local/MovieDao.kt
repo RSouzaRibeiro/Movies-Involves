@@ -7,7 +7,7 @@ import com.rafaelsouza.moviesinvolves.repository.model.Movie
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovie(movie: Movie)
+    fun insertMovie(movie: Movie): Long
 
     @Update
     fun updateMovie(movie: Movie)
